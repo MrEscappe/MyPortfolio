@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function header() {
 	function navSectionStyle() {
-		return "pt-12 pb-12 pl-8 pr-8 flex gap-10 border-solid border-r-2 border-white items-center justify-center";
+		return "pt-8 pb-8 pl-8 pr-8 flex gap-10 border-solid border-r-2 border-white items-center justify-center";
 	}
 
 	return (
@@ -19,7 +19,7 @@ export default function header() {
 				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
 				<a href="">CONTATO</a>
 			</div>
-			<div id="nav-social-section" className={`${navSectionStyle()} border-r-0 border-transparent basis-[31.25%]`}>
+			<div id="nav-social-section" className={`${navSectionStyle()} !border-r-0  basis-[31.25%]`}>
 				<a href="">
 					<Image src="/img/linkedin.svg" width={36} height={36} alt="Linkedin" />
 				</a>
