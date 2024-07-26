@@ -1,151 +1,81 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+
+const images = ["/img/keyboard.png", "/img/03.png", "/img/03.png", "/img/03.png"];
+
+const titles = ["R4 - Custom Keyboard", "Sala de estar e jantar - Render", "Yet Another Keyboard", "The Final Keyboard"];
+
+const descriptions = [
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.",
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.",
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.",
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.",
+];
 
 export default function Main() {
-	const articleSectionStyle = "h-full";
-	const articleStyle = "grid h-full grid-cols-[2fr_1fr] grid-rows-[4fr_1fr] absolute transition-all duration-400 ease";
-
 	const [currentIndex, setCurrentIndex] = useState(0);
+
+	const articleSectionStyle = "h-full";
+	const articleStyle =
+		"grid h-full grid-cols-[1fr] grid-rows-[4fr_1fr] lg:grid-cols-[2fr_1fr] lg:grid-rows-[4fr_1fr] absolute transition-all duration-500 ease-in-out";
 
 	useEffect(() => {
 		const articles = document.querySelectorAll("article");
 		articles.forEach((article, index) => {
+			article.classList.add("transform", "transition-transform", "duration-500", "ease-in-out");
 			if (index === currentIndex) {
-				article.classList.remove("translate-x-full", "hidden");
-				article.classList.add("translate-x-0");
-			} else if (index === currentIndex - 1 || (currentIndex === 0 && index === articles.length - 1)) {
-				article.classList.remove("translate-x-[-100%]", "hidden");
-				article.classList.add("translate-x-[100%]");
+				article.style.transform = "translateX(0)";
+			} else if (index < currentIndex) {
+				article.style.transform = "translateX(-100%)";
 			} else {
-				article.classList.add("hidden");
+				article.style.transform = "translateX(100%)";
 			}
 		});
 	}, [currentIndex]);
 
 	const handleLeftClick = () => {
-		const articles = document.querySelectorAll("article");
-		setCurrentIndex((prevIndex) => (prevIndex - 1 + articles.length) % articles.length);
+		setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
 	};
 
 	const handleRightClick = () => {
-		const articles = document.querySelectorAll("article");
-		setCurrentIndex((prevIndex) => (prevIndex + 1) % articles.length);
+		setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
 	};
 
 	return (
-		<div className="flex-grow relative overflow-hidden">
-			<article
-				data-index="0"
-				className={`${articleStyle} ${currentIndex === 0 ? "translate-x-0" : "translate-x-full"} ${
-					currentIndex === 1 ? "translate-x-full" : ""
-				}`}>
-				<div className={`${articleSectionStyle} relative border-solid border-r-2 border-b-2 border-white`}>
-					<a href="/" className="block w-full h-full">
-						<Image src="/img/keyboard.png" layout="fill" objectFit="cover" alt="Keyboard Image" />
-					</a>
-				</div>
-				<div className={`${articleSectionStyle} border-solid border-b-2 border-white flex items-end`}>
-					<p className="text-2xl align-middle place-content-between p-28">
-						Vizualização de um teclado customizado feito com o software Blender 3D e renderizado com o Cycles.
-					</p>
-				</div>
-				<div className={`${articleSectionStyle} pl-10 border-solid border-r-2 flex justify-start items-center`}>
-					<h2 className="text-5xl">R4 - Custom Keyboard</h2>
-				</div>
-				<div className={`${articleSectionStyle} flex flex-grow`}>
-					<button onClick={handleLeftClick} className="w-full h-full flex justify-center items-center border-r-2 hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" />
-					</button>
-					<button onClick={handleRightClick} className="w-full h-full flex justify-center items-center hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" className="rotate-180" />
-					</button>
-				</div>
-			</article>
-			<article
-				data-index="1"
-				className={`${articleStyle} ${currentIndex === 1 ? "translate-x-0" : "translate-x-full"} ${
-					currentIndex === 2 ? "translate-x-full" : ""
-				}`}>
-				<div className={`${articleSectionStyle} relative border-solid border-r-2 border-b-2 border-white`}>
-					<a href="/" className="block w-full h-full">
-						<Image src="/img/03.png" layout="fill" objectFit="cover" alt="room Image" />
-					</a>
-				</div>
-				<div className={`${articleSectionStyle} border-solid border-b-2 border-white flex items-end`}>
-					<p className="text-2xl align-middle place-content-between p-28">
-						Projeto de interiores de uma sala de estar e jantar em estilo classico. Feito com o software Blender 3D e renderizado com o
-						Cycles.
-					</p>
-				</div>
-				<div className={`${articleSectionStyle} pl-10 border-solid border-r-2 flex justify-start items-center`}>
-					<h2 className="text-5xl">Visualização Sala e Sala de Jantar</h2>
-				</div>
-				<div className={`${articleSectionStyle} flex flex-grow`}>
-					<button onClick={handleLeftClick} className="w-full h-full flex justify-center items-center border-r-2 hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" />
-					</button>
-					<button onClick={handleRightClick} className="w-full h-full flex justify-center items-center hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" className="rotate-180" />
-					</button>
-				</div>
-			</article>
-			<article
-				data-index="2"
-				className={`${articleStyle} ${currentIndex === 2 ? "translate-x-0" : "translate-x-full"} ${
-					currentIndex === 3 ? "translate-x-full" : ""
-				}`}>
-				<div className={`${articleSectionStyle} relative border-solid border-r-2 border-b-2 border-white`}>
-					<a href="/" className="block w-full h-full">
-						<Image src="/img/keyboard.png" layout="fill" objectFit="cover" alt="Keyboard Image" />
-					</a>
-				</div>
-				<div className={`${articleSectionStyle} border-solid border-b-2 border-white flex items-end`}>
-					<p className="text-2xl align-middle place-content-between p-28 ">
-						AOOOO ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione
-						praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.
-					</p>
-				</div>
-				<div className={`${articleSectionStyle} pl-10 border-solid border-r-2 flex justify-start items-center`}>
-					<h2 className="text-5xl">R4 - Custom Keyboard</h2>
-				</div>
-				<div className={`${articleSectionStyle} flex flex-grow`}>
-					<button onClick={handleLeftClick} className="w-full h-full flex justify-center items-center border-r-2 hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" />
-					</button>
-					<button onClick={handleRightClick} className="w-full h-full flex justify-center items-center hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" className="rotate-180" />
-					</button>
-				</div>
-			</article>
-			<article
-				data-index="3"
-				className={`${articleStyle} ${currentIndex === 3 ? "translate-x-0" : "translate-x-full"} ${
-					currentIndex === 0 ? "translate-x-full" : ""
-				}`}>
-				<div className={`${articleSectionStyle} relative border-solid border-r-2 border-b-2 border-white`}>
-					<a href="/" className="block w-full h-full">
-						<Image src="/img/keyboard.png" layout="fill" objectFit="cover" alt="Keyboard Image" />
-					</a>
-				</div>
-				<div className={`${articleSectionStyle} border-solid border-b-2 border-white flex items-end`}>
-					<p className="text-2xl align-middle place-content-between p-28">
-						PEDROOOOOO ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione
-						praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.
-					</p>
-				</div>
-				<div className={`${articleSectionStyle} pl-10 border-solid border-r-2 flex justify-start items-center`}>
-					<h2 className="text-5xl">R4 - Custom Keyboard</h2>
-				</div>
-				<div className={`${articleSectionStyle} flex flex-grow`}>
-					<button onClick={handleLeftClick} className="w-full h-full flex justify-center items-center border-r-2 hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" />
-					</button>
-					<button onClick={handleRightClick} className="w-full h-full flex justify-center items-center hover:bg-primary_hover">
-						<Image src="/img/arrow.svg" width={145} height={145} alt="" className="rotate-180" />
-					</button>
-				</div>
-			</article>
+		<div className="flex-grow relative overflow-hidden z-10">
+			{images.map((image, index) => (
+				<article
+					key={index}
+					data-index={index}
+					className={`${articleStyle} ${currentIndex === index ? "translate-x-0" : ""}`}
+					style={{
+						transform: currentIndex === index ? "translateX(0)" : index < currentIndex ? "translateX(-100%)" : "translateX(100%)",
+					}}>
+					<div className={`${articleSectionStyle} relative border-solid lg:border-r-2 border-b-2 border-white order-1 lg:order-1`}>
+						<a href="/" className="block w-full h-full">
+							<Image src={image} layout="fill" objectFit="cover" alt={`Image ${index + 1}`} />
+						</a>
+					</div>
+					<div className={`${articleSectionStyle} border-solid border-b-2 border-white flex items-end lg:p-28 p-8 order-3 lg:order-2`}>
+						<p className="text-2xl align-middle place-content-between ">{descriptions[index]}</p>
+					</div>
+					<div
+						className={`${articleSectionStyle} pl-10 border-solid lg:border-r-2 lg:border-b-0 border-b-2 flex justify-start items-center p-8 order-2 lg:oder-3`}>
+						<h2 className="text-5xl">{titles[index]}</h2>
+					</div>
+					<div className={`${articleSectionStyle} flex flex-grow h-28 lg:h-full order-4`}>
+						<button
+							onClick={handleLeftClick}
+							className="w-full lg:h-full flex justify-center items-center border-r-2 hover:bg-primary_hover">
+							<Image src="/img/arrow.svg" width={145} height={145} alt="" />
+						</button>
+						<button onClick={handleRightClick} className="w-full h-full flex justify-center items-center hover:bg-primary_hover">
+							<Image src="/img/arrow.svg" width={145} height={145} alt="" className="rotate-180" />
+						</button>
+					</div>
+				</article>
+			))}
 		</div>
 	);
 }

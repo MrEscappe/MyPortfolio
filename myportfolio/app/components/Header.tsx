@@ -1,31 +1,70 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
-export default function header() {
+export default function Header() {
+	const [menuOpen, setMenuOpen] = useState(false);
+
+	const toggleMenu = () => {
+		setMenuOpen(!menuOpen);
+	};
+
 	function navSectionStyle() {
-		return "pt-8 pb-8 pl-8 pr-8 flex gap-10 border-solid border-r-2 border-white items-center justify-center";
+		return "p-5 flex gap-10 border-solid md:border-r-2 border-white items-center justify-center md:pt-8 md:pb-8 md:pl-8 md:pr-8";
 	}
 
 	return (
-		<nav className="flex flex-row w-full border-solid border-b-2 border-white z-10 relative ">
-			<div id="nav-logo-section" className={`${navSectionStyle()} basis-[10%]`}>
+		<nav className="flex flex-row w-full border-solid border-b-2 border-white z-20 relative">
+			<div id="nav-logo-section" className={`${navSectionStyle()} basis-[30%] md:basis-[10%]`}>
 				<a href="/">
 					<Image src="/img/logo.svg" width={80} height={80} alt="Logo" />
 				</a>
 			</div>
-			<div id="nav-links-section" className={`${navSectionStyle()} basis-[56.65%] text-2xl `}>
-				<a href="">SOBRE</a>
-				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
-				<a href="">PROJETOS</a>
-				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
-				<a href="">CONTATO</a>
+			<div className="flex-1 flex justify-end items-center md:hidden">
+				<button onClick={toggleMenu} className="text-white z-40 pr-3">
+					{menuOpen ? (
+						<Image src="/img/burger.svg" width={36} height={36} alt="Close Menu" />
+					) : (
+						<Image src="/img/burger.svg" width={36} height={36} alt="Open Menu" />
+					)}
+				</button>
 			</div>
-			<div id="nav-social-section" className={`${navSectionStyle()} !border-r-0  basis-[33.35%]`}>
+			<div id="nav-links-section" className={`${navSectionStyle()} basis-[56.65%] text-2xl hidden md:flex`}>
+				<a href="" className="hover:text-slate-300">
+					SOBRE
+				</a>
+				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
+				<a href="" className="hover:text-slate-300">
+					PROJETOS
+				</a>
+				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
+				<a href="" className="hover:text-slate-300">
+					CONTATO
+				</a>
+			</div>
+			<div id="nav-social-section" className={`${navSectionStyle()} !border-r-0 basis-[33.35%] hidden md:flex`}>
 				<a href="">
 					<Image src="/img/linkedin.svg" width={36} height={36} alt="Linkedin" />
 				</a>
 				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
 				<a href="">
 					<Image src="/img/github.svg" width={36} height={36} alt="Github" />
+				</a>
+			</div>
+			<div
+				className={`fixed top-0 left-0 w-full h-full bg-primary bg-opacity-99 flex flex-col items-center justify-center gap-10 transform ${
+					menuOpen ? "translate-x-0" : "translate-x-full"
+				} transition-transform duration-300 ease-in-out z-30 md:hidden`}>
+				<a href="" className="text-2xl text-white hover:text-slate-300" onClick={toggleMenu}>
+					SOBRE
+				</a>
+				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
+				<a href="" className="text-2xl text-white hover:text-slate-300" onClick={toggleMenu}>
+					PROJETOS
+				</a>
+				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
+				<a href="" className="text-2xl text-white hover:text-slate-300" onClick={toggleMenu}>
+					CONTATO
 				</a>
 			</div>
 		</nav>
