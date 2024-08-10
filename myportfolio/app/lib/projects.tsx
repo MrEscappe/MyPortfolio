@@ -17,7 +17,7 @@ export const projects: Project[] = [
 		description:
 			"lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.",
 		image: "/img/keyboard.png",
-		video: "/videos/r4.mp4",
+		video: "/videos/r4.webm",
 		details:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt error nihil fuga quae debitis id, eveniet dolore ratione praesentium facere molestias quia, facilis dolor perferendis beatae ea, tempore itaque cum.",
 		tools: [
