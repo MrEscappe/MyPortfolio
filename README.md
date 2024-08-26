@@ -7,7 +7,7 @@ Este é um site de portfólio pessoal desenvolvido com Next.js, React e Tailwind
 - Página inicial com carrossel de projetos
 - Galeria de projetos com detalhes individuais
 - Página "Sobre" com informações pessoais e profissionais
-- Página de contato com formulário interativo
+- Página com formulário de contato
 - Design responsivo para desktop e dispositivos móveis
 - Animações suaves de rolagem
 
@@ -55,3 +55,7 @@ Navegue pelo site usando o menu principal. Você pode:
 Link do Projeto: [https://github.com/MrEscappe/MyPortfolio](https://github.com/MrEscappe/MyPortfolio)
 
 ## 🙏 Agradecimentos
+
+Obrigado para Taina, por todo o apoio e incentivo.
+
+```
