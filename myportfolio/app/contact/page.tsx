@@ -39,7 +39,7 @@ export default function ContactPage() {
 				</form>
 				<div className="w-full md:w-1/2 md:pl-8">
 					<p className="text-lg">
-						Lorem ipsum dolor sit amet. Qui iure consectetur et aliquam voluptas sit voluptatum maiores rem similique obcaecati.
+						Gostou do que viu? Gostaria de trabalhar comigo? Ótimo! Me mande uma mensagem e vamos conversar sobre o seu projeto.
 					</p>
 				</div>
 			</div>

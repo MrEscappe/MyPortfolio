@@ -40,11 +40,11 @@ export default function Header() {
 				</Link>
 			</div>
 			<div id="nav-social-section" className={`${navSectionStyle()} !border-r-0 basis-[33.35%] hidden md:flex`}>
-				<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+				<a href="https://www.linkedin.com/in/jos%C3%A9s%C3%A9rgiopsilva/" target="_blank" rel="noopener noreferrer">
 					<Image src="/img/linkedin.svg" width={36} height={36} alt="Linkedin" />
 				</a>
 				<Image src="/img/circle.svg" width={12} height={12} alt="Circle" />
-				<a href="https://github.com" target="_blank" rel="noopener noreferrer">
+				<a href="https://github.com/MrEscappe" target="_blank" rel="noopener noreferrer">
 					<Image src="/img/github.svg" width={36} height={36} alt="Github" />
 				</a>
 			</div>
